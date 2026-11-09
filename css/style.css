@@ -1,0 +1,73 @@
+/* Colores principales */
+:root {
+    --fondo: #12121c;
+    --secundario: #1e1e2e;
+    --principal: #8b5cf6;
+    --texto: #ffffff;
+    --gris: #a1a1aa;
+}
+
+/* Estilo general */
+body {
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* Cabecera */
+header {
+    background-color: var(--secundario);
+    padding: 20px;
+    text-align: center;
+}
+
+nav a {
+    color: var(--texto);
+    text-decoration: none;
+    margin: 10px;
+}
+
+nav a:hover {
+    color: var(--principal);
+}
+
+/* Contenido */
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: var(--principal);
+}
+
+/* Tarjetas */
+.card {
+    background-color: var(--secundario);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    border: 1px solid #33334a;
+}
+
+/* Botones */
+button {
+    background-color: var(--principal);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #7041d8;
+}
+
+/* Pie de página */
+footer {
+    background-color: var(--secundario);
+    color: var(--gris);
+    text-align: center;
+    padding: 15px;
+}
