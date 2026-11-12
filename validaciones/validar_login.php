@@ -1,13 +1,10 @@
 <?php
-
-// Esta funcion valida si estan rellenados los campos de username y pasword
+// Valida los campos del login
 function validarCamposLogin($username, $password)
-{
-    // Error si alguno es un array, o si el usuario (sin espacios) está vacío, o si la contraseña está vacía
-    if (is_array($username) || is_array($password) || empty(trim($username)) || empty($password)) {
-        return 'Escribe el usuario y la contraseña.';
+{   // Comprueba si es un string y si esta vacio
+    if (!is_string($username) || !is_string($password) || trim($username) === '' || $password === '') {
+        return 'Incorrecto: Escriba bien la contraseÃ±a y el usuario';
     }
 
-    // Si no hay ningún problema, devuelvo texto vacío
     return '';
 }
