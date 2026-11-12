@@ -1,0 +1,780 @@
+/* Colores y ajustes que comparten las tres pantallas. */
+/* Aquí están los colores comunes. Si cambias una variable, se actualizan todos los elementos que la usan. */
+:root {
+    --ink: #293c45;
+    --muted: #5d716d;
+    --paper: #fffdf0;
+    --green: #27785f;
+    --line: #344b50;
+    --border: #b6c7b8;
+    --shadow: 0 5px 18px #344b5010;
+}
+/* Hace que el ancho incluya el relleno y el borde. Así las cajas no crecen más de lo esperado. */
+* {
+    box-sizing: border-box;
+}
+/* El salto a las salas es suave y deja un pequeño margen arriba al llegar. */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+}
+/* Define el fondo, el color del texto y la letra general de toda la aplicación. */
+body {
+    margin: 0;
+    background: #e8eee0;
+    color: var(--ink);
+    font: 15px/1.55 'Trebuchet MS', 'Segoe UI', Arial, sans-serif;
+}
+/* Quitamos los márgenes que el navegador pone por defecto para controlar nosotros la separación. */
+h1, h2, p {
+    margin: 0;
+}
+/* Acercamos un poco las letras de los títulos y del nombre del centro. */
+h1, h2, .brand {
+    letter-spacing: -.6px;
+}
+/* Estos enlaces y detalles decorativos comparten el mismo verde. */
+a, .hero h1 span, .hero-label span, .cartridge span {
+    color: var(--green);
+}
+/* Oscurece el enlace al pasar el ratón para que se vea que se puede pulsar. */
+a:hover {
+    color: #174c3f;
+}
+/* Los controles del formulario usan la misma letra que el resto de la página. */
+button, input, select {
+    font: inherit;
+}
+/* Facilita la respuesta de los controles al tocarlos en una pantalla táctil. */
+a, button, input, select {
+    touch-action: manipulation;
+}
+/* Marca el elemento seleccionado al navegar con Tab. Es importante para usar la página sin ratón. */
+:focus-visible {
+    outline: 3px solid #bc6026;
+    outline-offset: 4px;
+}
+/* Reservamos la letra de aspecto retro para las etiquetas y los pequeños detalles. */
+.eyebrow, .type-badge, .room-number, .hero-label, .cartridge {
+    font-family: 'Courier New', monospace;
+}
+/* Es el texto pequeño que aparece encima de un título, por ejemplo la región de la portada. */
+.eyebrow {
+    display: block;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+/* Cabecera: logo, menú y usuario conectado. */
+/* Estos grupos colocan sus elementos en fila y los centran verticalmente. Compartimos la regla para no repetirla. */
+.topbar, .brand, nav, .dashboard-heading, .room-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+/* Limita el ancho de la cabecera, la centra y separa el menú del contenido con una línea. */
+.topbar {
+    max-width: 1300px;
+    min-height: 94px;
+    margin: auto;
+    padding: 20px 40px;
+    gap: 32px;
+    border-bottom: 1px solid var(--border);
+}
+/* Alinea la Poké Ball con Gaming Center. Evita que el nombre se divida en varias líneas. */
+.brand {
+    color: var(--ink);
+    font-size: 23px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+}
+/* Da un tamaño más discreto al texto GAMING MANAGEMENT que va debajo del nombre. */
+.brand small {
+    display: block;
+    margin-top: 4px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+}
+/* Empuja el menú hacia la derecha de la cabecera y separa sus enlaces. */
+nav {
+    gap: 8px;
+    margin-left: auto;
+}
+/* Da espacio para pulsar las opciones del menú y redondea sus bordes. */
+nav a {
+    padding: 9px 16px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font-weight: 700;
+    text-decoration: none;
+}
+/* Resalta la opción del menú cuando pasas el ratón por encima. */
+nav a:hover {
+    background: #d9e3d1;
+}
+/* Destaca la página en la que estamos. En el HTML se indica con aria-current="page". */
+nav a[aria-current] {
+    border-color: var(--border);
+    background: var(--paper);
+    box-shadow: var(--shadow);
+}
+/* Diferencia visualmente el enlace de cerrar sesión de las otras opciones. */
+nav .logout {
+    color: #825658;
+}
+/* Separa el nombre del gamemaster del menú y lo muestra en pequeño. */
+.trainer {
+    padding-left: 24px;
+    border-left: 1px solid var(--border);
+    color: var(--green);
+    font-size: 12px;
+}
+/* La Poké Ball se dibuja con CSS, incluido su círculo central. */
+/* El círculo y el degradado forman las dos mitades de la Poké Ball. No necesita una imagen aparte. */
+.pokeball {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border: 3px solid var(--line);
+    border-radius: 50%;
+    background: linear-gradient(#de6b66 0 44%, var(--line) 44% 56%, #fffdf0 56%);
+}
+/* Añade el botón central de la Poké Ball. Se coloca respecto al círculo exterior. */
+.pokeball::after {
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--line);
+    border-radius: 50%;
+    background: var(--paper);
+}
+/* Contenido y portada. La capa clara ayuda a leer sobre el paisaje. */
+/* Es el contenedor principal de salas e histórico: centra el contenido y deja márgenes laterales. */
+.app-main {
+    max-width: 1220px;
+    margin: auto;
+    padding: 30px 40px;
+}
+/* Muestra el paisaje de portada. Ocultamos lo que sobresale para respetar las esquinas redondeadas. */
+.hero {
+    position: relative;
+    min-height: 318px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 20px 20px 32px 20px;
+    box-shadow: 0 8px 24px #344b5012;
+    background: #9dcf96 url('../assets/hoenn.svg') right center / auto 100% no-repeat;
+}
+/* Pone una capa clara sobre la imagen, más fuerte a la izquierda para poder leer el texto. */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #f2f5de 0%, #f2f5deed 30%, #f2f5de00 68%);
+}
+/* Mantiene el texto por encima de esa capa y limita su ancho para que no tape todo el paisaje. */
+.hero-copy {
+    position: relative;
+    max-width: 620px;
+    padding: 36px;
+}
+/* El título cambia de tamaño según el ancho de pantalla, con un mínimo y un máximo gracias a clamp. */
+.hero h1 {
+    margin: 16px 0;
+    font-size: clamp(26px, 3.3vw, 43px);
+    line-height: 1.14;
+    letter-spacing: -1.4px;
+}
+/* Separa la descripción del botón y da un poco más de espacio entre sus líneas. */
+.hero p {
+    margin-bottom: 22px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+/* Las dos etiquetas del paisaje comparten borde, fondo y posición absoluta. */
+.hero-label, .cartridge {
+    position: absolute;
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background: var(--paper);
+    font-size: 10px;
+}
+/* Coloca la etiqueta RUTA 101 en la esquina inferior derecha de la portada. */
+.hero-label {
+    right: 14px;
+    bottom: 14px;
+}
+/* Separa la indicación ONLINE del nombre de la ruta. */
+.hero-label span {
+    margin-left: 16px;
+}
+/* Coloca el título del apartado y cualquier detalle lateral en la misma fila. */
+.dashboard-heading {
+    justify-content: space-between;
+    margin: 38px 0 20px;
+}
+/* Unifica el tamaño de los títulos del mapa de salas y del histórico. */
+.dashboard-heading h1, .dashboard-heading h2 {
+    margin-top: 4px;
+    font-size: 28px;
+}
+/* Usamos un color más suave en las explicaciones que acompañan a los títulos. */
+.dashboard-heading p, .login-panel > p {
+    color: var(--muted);
+}
+/* Tarjetas del resumen y de las salas. */
+/* Reparte los tres contadores en columnas del mismo ancho. */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+/* El resumen, las salas y los filtros usan el mismo acabado de tarjeta. Aquí se define una sola vez. */
+.stats > div, .room, form[action="historico.php"] {
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: var(--paper);
+    box-shadow: var(--shadow);
+}
+/* Dentro de cada contador, el texto queda a un lado y el número al otro. */
+.stats > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 19px 22px;
+}
+/* Hace las etiquetas de los contadores más pequeñas y las muestra en minúsculas. */
+.stats span {
+    font-size: 12px;
+    text-transform: lowercase;
+}
+/* Recupera la mayúscula inicial de cada etiqueta del resumen. */
+.stats span::first-letter {
+    text-transform: uppercase;
+}
+/* Los números destacan en verde para poder leer el estado general de un vistazo. */
+.stats strong {
+    color: var(--green);
+    font-size: 31px;
+    line-height: 1;
+}
+/* Define la tarjeta de sala. El amarillo es el color inicial; las clases room-2, room-3, etc. lo sustituyen. */
+.room {
+    --accent: #bd9439;
+    margin-bottom: 28px;
+    border-top: 5px solid var(--accent);
+}
+/* Cada sala conserva su color Pokémon. */
+/* Bulbasaur y Rayquaza comparten el tono verde. */
+.room-2, .room-9 {
+    --accent: #4d9564;
+}
+/* Charmander usa el tono naranja. */
+.room-3 {
+    --accent: #d47d53;
+}
+/* Squirtle usa el tono azul. */
+.room-4 {
+    --accent: #649fae;
+}
+/* Gengar y Mewtwo comparten el tono morado. */
+.room-5, .room-8 {
+    --accent: #9575ad;
+}
+/* Eevee usa el tono marrón. */
+.room-6 {
+    --accent: #b2916f;
+}
+/* Snorlax usa el tono verde azulado. */
+.room-7 {
+    --accent: #6c9895;
+}
+/* Deja espacio entre el título de la sala y el resumen de capacidad. */
+.room-heading {
+    margin-bottom: 14px;
+}
+/* Centra el número dentro del recuadro que usa el color de la sala. */
+.room-number {
+    display: grid;
+    place-items: center;
+    min-width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #172b30;
+    font-size: 20px;
+    font-weight: 700;
+}
+/* Tamaño del nombre Pokémon de cada sala. */
+.room h2 {
+    font-size: 23px;
+}
+/* Es la etiqueta del tipo Pokémon. El margen automático la lleva al extremo derecho. */
+.type-badge {
+    margin-left: auto;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: #f0efdf;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+/* Estilo de la línea que indica la capacidad y los módulos ocupados. */
+.room > p {
+    margin-bottom: 17px;
+    color: var(--muted);
+    font-size: 12px;
+}
+/* Las tablas se pueden deslizar en móvil sin mover toda la página. */
+/* Si la tabla no cabe, permite desplazarla hacia los lados dentro de este contenedor. */
+.table-scroll {
+    overflow-x: auto;
+    border: 1px solid #c4d1be;
+    border-radius: 9px;
+}
+/* Hace que la tabla ocupe el ancho disponible y que sus bordes no aparezcan dobles. */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--paper);
+    font-size: 13px;
+}
+/* Da espacio a las celdas y alinea su contenido a la izquierda. */
+th, td {
+    padding: 15px 12px;
+    text-align: left;
+}
+/* Distingue la cabecera de la tabla con otro fondo y texto pequeño en mayúsculas. */
+th {
+    padding-block: 13px;
+    background: #e5eddd;
+    font-size: 10px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+/* Separa las filas de datos con una línea suave. */
+td {
+    border-top: 1px solid #d4ddcb;
+}
+/* Resalta ligeramente la fila que estás mirando con el ratón. */
+tbody tr:hover {
+    background: #f3f4e6;
+}
+/* La primera celda, las etiquetas de estado y la frase del login comparten la negrita. */
+td:first-child, .status, .login-art p {
+    font-weight: 700;
+}
+/* Forma de las etiquetas Libre y En partida. Evita que se partan en dos líneas. */
+.status {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    white-space: nowrap;
+}
+/* Colores del estado libre. */
+.free {
+    background: #dcebd6;
+    color: #28604b;
+}
+/* Colores del estado ocupado. */
+.busy {
+    background: #f9e6c3;
+    color: #85501e;
+}
+/* Botones, campos y avisos compartidos por los formularios. */
+/* El botón real y el enlace de explorar salas comparten aspecto. El cursor indica que se pueden pulsar. */
+button, .button {
+    display: inline-block;
+    padding: 11px 17px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--green);
+    color: var(--paper);
+    box-shadow: 0 2px 4px #344b5026;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .15s, background .15s;
+}
+/* Al pasar el ratón, el botón se oscurece y sube un píxel. */
+button:hover, .button:hover {
+    background: #205d4e;
+    color: white;
+    transform: translateY(-1px);
+}
+/* Mientras lo pulsas, baja un píxel para dar sensación de respuesta. */
+button:active, .button:active {
+    transform: translateY(1px);
+}
+/* Aspecto común de campos y desplegables. El ancho máximo evita que se salgan de su contenedor. */
+input, select {
+    max-width: 100%;
+    min-height: 44px;
+    padding: 9px 11px;
+    border: 1px solid #82958b;
+    border-radius: 7px;
+    background: #fffef5;
+    color: var(--ink);
+}
+/* Marca en verde el campo en el que estás escribiendo o seleccionando. */
+input:focus, select:focus {
+    border-color: var(--green);
+}
+/* Agrupa los controles en fila. Si falta espacio, permite que pasen a la siguiente línea. */
+.form-ocupacion, form[action="historico.php"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+/* Reserva espacio suficiente para los jugadores y el botón de ocupar. */
+.form-ocupacion {
+    min-width: 265px;
+    gap: 8px;
+}
+/* La etiqueta Jugadores es más pequeña para que quepa junto al campo. */
+.form-ocupacion label {
+    font-size: 11px;
+}
+/* El número de jugadores necesita un campo corto, no una caja de texto completa. */
+.form-ocupacion input {
+    width: 57px;
+    min-height: 36px;
+    padding: 4px 6px;
+}
+/* Reduce el relleno del botón para ajustarlo a la fila de la tabla. */
+.form-ocupacion button {
+    padding: 7px 12px;
+}
+/* Si no hay un error, su contenedor no ocupa espacio. */
+.error-jugadores:empty {
+    display: none;
+}
+/* Si hay un error, lo coloca en una línea completa debajo de los controles. */
+.error-jugadores:not(:empty) {
+    flex-basis: 100%;
+}
+/* Los mensajes de error se ven en rojo y con un tamaño discreto. */
+[role="alert"], .error-jugadores {
+    color: #a13e39;
+    font-size: 12px;
+}
+/* Da formato al aviso que aparece al volver de una acción sobre un módulo. */
+[role="status"] {
+    margin-bottom: 22px;
+    padding: 14px;
+    border: 1px solid var(--green);
+    border-radius: 9px;
+    background: #e2efdb;
+}
+/* Separa los filtros del título y de la tabla de resultados. */
+form[action="historico.php"] {
+    margin: 20px 0;
+}
+/* Evita que los desplegables ocupen demasiado espacio en escritorio. */
+form[action="historico.php"] select {
+    max-width: 290px;
+}
+/* Deja margen alrededor del texto que cuenta los resultados encontrados. */
+.app-main > p {
+    margin: 18px 0;
+}
+/* Acceso: ilustración y formulario dentro de una tarjeta. */
+/* Organiza el acceso y su pie en vertical, ocupando al menos la altura de la ventana. */
+.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    background: #d7dfd7;
+}
+/* Divide la tarjeta del login en dos columnas iguales: ilustración y formulario. */
+.login-shell {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: min(960px, 100%);
+    margin: auto;
+    overflow: hidden;
+    border: 1px solid #3e3d54;
+    border-radius: 22px;
+    background: var(--paper);
+    box-shadow: 0 14px 42px #344b5026;
+}
+/* Coloca el mismo paisaje como fondo del panel izquierdo, dejando sitio para el título. */
+.login-art {
+    position: relative;
+    min-height: 560px;
+    padding: 50px 40px 40px;
+    border-right: 1px solid #3e3d54;
+    background: #c3e0ad url('../assets/hoenn.svg') 62% bottom / auto 63% no-repeat;
+}
+/* Da protagonismo a Gaming Center con un título grande y una pequeña sombra clara. */
+.login-art h1 {
+    margin: 20px 0 18px;
+    font-size: 61px;
+    line-height: 1.02;
+    letter-spacing: -2.5px;
+    text-shadow: 2px 2px 0 #fff6cf;
+}
+/* Ajusta la estrella decorativa que acompaña al título. */
+.login-art h1 span {
+    margin-left: 3px;
+    color: #bf7150;
+    font-size: 31px;
+}
+
+/* Sitúa la etiqueta GAMING CENTER y POWER en la parte baja del dibujo. */
+.cartridge {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    padding: 10px;
+    background: #fffdf0e8;
+    font-size: 11px;
+}
+/* Lleva POWER al extremo derecho de la etiqueta. */
+.cartridge span {
+    float: right;
+}
+/* Centra verticalmente el formulario y deja espacio respecto a los bordes. */
+.login-panel {
+    align-self: center;
+    padding: 40px;
+}
+/* Separa el logo del saludo al entrenador. */
+.login-panel > .brand {
+    margin-bottom: 38px;
+}
+/* Tamaño y márgenes del saludo de bienvenida. */
+.login-panel h2 {
+    margin: 10px 0;
+    font-size: 26px;
+}
+/* Tamaño de la explicación que aparece debajo del saludo. */
+.login-panel > p {
+    font-size: 13px;
+}
+/* Separa el formulario de los textos de bienvenida. */
+.login-panel form {
+    margin-top: 24px;
+}
+/* Coloca cada etiqueta encima de su campo y deja espacio entre usuario y contraseña. */
+.login-panel label {
+    display: block;
+    margin: 16px 0 6px;
+    font-size: 13px;
+    font-weight: 700;
+}
+/* Los campos y el botón ocupan todo el ancho disponible del formulario. */
+.login-panel input, .login-panel button {
+    width: 100%;
+    min-height: 46px;
+}
+/* Da a los campos del acceso su fondo ligeramente verde. */
+.login-panel input {
+    display: block;
+    background: #f1f3e6;
+}
+/* Separa el botón del campo de contraseña y de los posibles errores. */
+.login-panel button {
+    margin-top: 28px;
+}
+/* Coloca los errores del acceso en una línea propia, debajo del campo. */
+.login-panel [role="alert"] {
+    display: block;
+    margin-top: 5px;
+}
+/* Pie centrado y discreto con el nombre del centro. */
+.page-footer {
+    padding: 24px 15px;
+    color: var(--muted);
+    font-size: 11px;
+    text-align: center;
+}
+/* El enlace para saltar al contenido aparece al usar el teclado. */
+/* Oculta fuera de la pantalla el enlace para saltar al contenido, hasta que se use con el teclado. */
+.skip-link {
+    position: absolute;
+    top: -80px;
+    z-index: 10;
+    padding: 12px;
+    background: white;
+}
+/* Al llegar con Tab, muestra ese enlace en la parte superior. */
+.skip-link:focus {
+    top: 12px;
+}
+/* Ajustes de tamaño: la estructura y los colores siguen siendo los mismos. */
+/* A partir de este tamaño reducimos márgenes para aprovechar mejor el espacio. */
+@media (max-width: 900px) {
+    /* El menú puede pasar a otra fila cuando ya no cabe. */
+    .topbar {
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 18px 24px;
+    }
+    /* Ocultamos solo el nombre para liberar espacio en la cabecera. */
+    .trainer {
+        display: none;
+    }
+    .app-main, .login-panel {
+        padding: 24px;
+    }
+    /* Ajustamos el panel ilustrado sin cambiar la imagen. */
+    .login-art {
+        padding: 28px;
+    }
+    .login-art h1 {
+        font-size: 50px;
+    }
+    .stats > div {
+        padding: 15px;
+    }
+}
+/* En móvil las tarjetas se adaptan y el login pasa a una sola columna. */
+@media (max-width: 600px) {
+    .topbar, .room {
+        padding: 15px;
+    }
+    .brand {
+        font-size: 21px;
+    }
+    nav {
+        width: 100%;
+        margin: 0;
+    }
+    nav a {
+        flex: 1;
+        padding: 7px;
+        text-align: center;
+        font-size: 13px;
+    }
+    .app-main, .login-page {
+        padding: 20px 14px;
+    }
+    /* Reencuadramos el paisaje y aclaramos arriba para leer el título. */
+    .hero {
+        min-height: 360px;
+        background-position: 65% bottom;
+        background-size: auto 65%;
+        border-radius: 15px 15px 24px 15px;
+    }
+    .hero::before {
+        background: linear-gradient(#f2f5de 0%, #f2f5deed 37%, #f2f5de00 72%);
+    }
+    .hero-copy {
+        padding: 23px;
+    }
+    .hero h1 {
+        margin: 13px 0;
+        font-size: 30px;
+        letter-spacing: -.9px;
+    }
+    .hero p {
+        max-width: 255px;
+        font-size: 12px;
+    }
+    .eyebrow, .type-badge {
+        font-size: 8px;
+    }
+    /* Mantenemos tres contadores, pero ponemos el número debajo del texto. */
+    .stats {
+        gap: 8px;
+    }
+    .stats > div {
+        display: block;
+        padding: 12px 10px;
+    }
+    .stats span {
+        display: block;
+        min-height: 32px;
+        font-size: 10px;
+    }
+    .stats strong {
+        font-size: 27px;
+    }
+    /* Reducimos los detalles de las salas para que no se amontonen. */
+    .room h2 {
+        font-size: 19px;
+    }
+    .room-heading {
+        gap: 10px;
+    }
+    .room-number {
+        min-width: 34px;
+        height: 36px;
+        font-size: 17px;
+    }
+    .type-badge {
+        padding: 4px 7px;
+    }
+    th, td {
+        padding: 13px 9px;
+    }
+    /* Filtros y login se organizan en una columna en lugar de dos. */
+    form[action="historico.php"], .login-shell {
+        grid-template-columns: 1fr;
+    }
+    form[action="historico.php"] {
+        display: grid;
+        padding: 16px;
+    }
+    form[action="historico.php"] select {
+        width: 100%;
+        max-width: none;
+    }
+    .login-shell {
+        border-radius: 16px;
+    }
+    /* Ajustamos el panel ilustrado sin cambiar la imagen. */
+    .login-art {
+        min-height: 245px;
+        padding: 20px;
+        border-right: 0;
+        border-bottom: 1px solid #3e3d54;
+        background-size: auto 100%;
+    }
+    .login-art h1 {
+        margin: 10px 0;
+        font-size: 40px;
+        letter-spacing: -1.5px;
+    }
+    .cartridge {
+        bottom: 10px;
+        left: auto;
+        right: 10px;
+        padding: 5px;
+        font-size: 8px;
+    }
+    .cartridge span {
+        margin-left: 10px;
+    }
+    .login-panel > .brand {
+        margin-bottom: 25px;
+    }
+}
+/* Si el usuario ha pedido menos movimiento, desactivamos desplazamientos suaves y animaciones. */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
