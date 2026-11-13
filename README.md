@@ -99,8 +99,8 @@ Para acceder a la aplicación se pueden utilizar los siguientes usuarios:
 
 | Usuario | Contraseña | Observaciones |
 |---|---|---|
-| [gm.alba] | [qweQWE123] | [Game Master] |
-| [gm.marcos] | [qweQWE123] | [Game Master] |
+| gm.alba | qweQWE123 | Game Master |
+| gm.marcos | qweQWE123 | Game Master |
 
 *Estas credenciales son únicamente para realizar pruebas del proyecto.*
 
