@@ -1,7 +1,7 @@
 #PJ1 Gaming Center
 
 **Proyecto:** Desarrollo de una aplicación web para la gestión de un Gaming Center.  
-**Grupo:** [Grupo X]  
+**Grupo:** PokeDaw  
 **Curso:** DAW2 
 **Módulo:** 0616 proyecto intermodular
 
@@ -52,7 +52,7 @@ Para ejecutar el proyecto se necesita:
 1. Clonar el repositorio:
 
    ```bash
-   git clone [https://github.com/ivan-grandee/Grup1_DAW2_PJ5_A01_GamingCenter.git]
+   git clone https://github.com/ivan-grandee/Grup1_DAW2_PJ5_A01_GamingCenter.git
    ```
 
 2. Copiar el proyecto en el directorio del servidor web.
@@ -99,8 +99,55 @@ Para acceder a la aplicación se pueden utilizar los siguientes usuarios:
 
 | Usuario | Contraseña | Observaciones |
 |---|---|---|
-| gm.alba | qweQWE123 | Game Master |
-| gm.marcos | qweQWE123 | Game Master |
+| esteban | qweQWE123 | Game Master |
+| carlos | qweQWE123 | Game Master |
+| javi | qweQWE123 | Game Master |
+| nil | qweQWE123 | Game Master |
+| ivan | qweQWE123 | Game Master |
 
 *Estas credenciales son únicamente para realizar pruebas del proyecto.*
 
+## 7. Guía de uso
+
+### 7.1 Inicio de sesión
+Para acceder a la aplicacion se debe usar un usuario game master y hacer login correcto
+
+### 7.2 Gestión de salas y módulos
+Para consultar las salas tenemos que fijarnos en la primera pantalla que nos sale al loguearnos donde nos apareceran todas las salas con sus respectivos módulos a demás de algo de informacion necesaria
+
+### 7.3 Ocupar un módulo
+Para ocupar un modulo es tan sencillo como ir a la sala del modulo que se desea ocupar e introducir el numero de personas que lo ocuparán
+
+### 7.4 Liberar un módulo
+Para liberar un módulo hemos añadido el botón de liberar módulo en el que al darle se deja ese módulo libre para que otra gente lo pueda ocupar
+
+### 7.5 Histórico de ocupaciones
+Para el histórico hay otra pantalla en la que aparecen todos los registros de los modulos que se han ocupado y liberado, se pueden filtrar por sala y por módulo
+## 8. Integrantes, roles y responsabilidades
+
+| Integrante | Rol | Tareas desarrolladas |
+|---|---|---|
+| Ivan | Coordinador | [Detallar tareas realizadas] |
+| Carlos | Impulsor | [Detallar tareas realizadas] |
+| Javi | Diseño y Front | [Detallar tareas realizadas] |
+| Nil | Histórico y JS cliente | [Detallar tareas realizadas] |
+| Esteban | Finalizador | [Detallar tareas realizadas] |
+
+## 9. Organización del trabajo y GitHub
+
+El desarrollo del proyecto se ha organizado mediante un repositorio compartido de GitHub.
+
+- **Repositorio:** https://github.com/ivan-grandee/Grup1_DAW2_PJ5_A01_GamingCenter.git.
+- **Ramas utilizadas:** Cada uno ha tenido una rama con su nombre en la que ha ido subiendo lo que ha hecho diariamente.
+- **Planificación:** Diagrama de Gantt.
+- **Seguimiento:** Reuniones diarias (*Daily Meetings*).
+
+## 10. Documentación adicional
+
+- **Diagrama Gantt:** [Gantt/Gantt_Gaming_Center.xlsx].
+- **Mockup:** DiseñoFigma.filg.
+- **Base de datos:** `sql/db_pj1_gamingCenter.sql`.
+
+---
+
+**Proyecto realizado por el equipo de PokeDaw – DAW2.**
