@@ -122,7 +122,7 @@ if (isset($_GET['ok']) && $_GET['ok'] === 'ocupado') {
                                             <button type="submit">Liberar módulo</button>
                                         </form>
                                     <?php } else { ?>
-                                        No puedes liberar la ocupación de otro gamemaster.
+                                        No puedes modificar el puesto, ha sido ocupado por otro gamemaster.
                                     <?php } ?>
                                 <?php } else { ?>
                                     <form class="form-ocupacion" action="../procesos/ocupar.php" method="post" novalidate>

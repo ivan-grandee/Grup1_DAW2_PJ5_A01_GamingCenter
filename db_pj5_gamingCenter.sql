@@ -39,9 +39,11 @@ CREATE TABLE ocupacions (
 ) ENGINE=InnoDB;
 
 INSERT INTO gamemasters (id, username, password, nom, cognom) VALUES
-  (1, 'gm.alba', '$2y$12$N3I38RpO7r6itfc7ivfsTeJ2Pc.2DUn7yhoQZb3R3I67Rb8GhcV/W', 'Alba', 'Ruiz'),
-  (2, 'gm.marcos', '$2y$12$lyrLFvo8OsEqnPlmSYo8/OMv3LzlXr15/7kWVD8FRxw19GibrswIW', 'Marcos', 'Vidal'),
-  (3, 'gm.sara', '$2y$12$4yP.r6vvQpuQhiRf8kR1DOzBsf2UIc7P3kh4c8zCz1z3VnAlLWjwi', 'Sara', 'Costa');
+  (1, 'nil', '$2y$12$tsq1rDrg3D7SUw9vsgcoAe9SjR42KqAnI44XXNDPHzLoeHDrTBn6m', 'Nil', ''),
+  (2, 'ivan', '$2y$12$tsq1rDrg3D7SUw9vsgcoAe9SjR42KqAnI44XXNDPHzLoeHDrTBn6m', 'Ivan', ''),
+  (3, 'javier', '$2y$12$tsq1rDrg3D7SUw9vsgcoAe9SjR42KqAnI44XXNDPHzLoeHDrTBn6m', 'Javier', ''),
+  (4, 'carlos', '$2y$12$tsq1rDrg3D7SUw9vsgcoAe9SjR42KqAnI44XXNDPHzLoeHDrTBn6m', 'Carlos', ''),
+  (5, 'esteban', '$2y$12$tsq1rDrg3D7SUw9vsgcoAe9SjR42KqAnI44XXNDPHzLoeHDrTBn6m', 'Esteban', '');
 
 INSERT INTO sales (id, nom, tipus) VALUES
   (1, 'Sala Pikachu', 'PC Standard'),
@@ -131,4 +133,13 @@ INSERT INTO ocupacions (modul_id, gamemaster_id, num_jugadors, data_inici, data_
   (17, 2, 4, DATE_SUB(NOW(), INTERVAL 20 MINUTE), NULL),
   (23, 3, 2, DATE_SUB(NOW(), INTERVAL 15 MINUTE), NULL),
   (32, 2, 5, DATE_SUB(NOW(), INTERVAL 10 MINUTE), NULL),
-  (20, 1, 1, DATE_SUB(NOW(), INTERVAL 5 MINUTE), NULL);
+  (20, 1, 1, DATE_SUB(NOW(), INTERVAL 5 MINUTE), NULL),
+  (2, 1, 2, DATE_SUB(NOW(), INTERVAL 22 MINUTE), NULL),
+  (4, 2, 5, DATE_SUB(NOW(), INTERVAL 19 MINUTE), NULL),
+  (7, 3, 5, DATE_SUB(NOW(), INTERVAL 17 MINUTE), NULL),
+  (12, 4, 5, DATE_SUB(NOW(), INTERVAL 14 MINUTE), NULL),
+  (18, 5, 2, DATE_SUB(NOW(), INTERVAL 12 MINUTE), NULL),
+  (22, 1, 4, DATE_SUB(NOW(), INTERVAL 9 MINUTE), NULL),
+  (28, 2, 2, DATE_SUB(NOW(), INTERVAL 7 MINUTE), NULL),
+  (33, 3, 2, DATE_SUB(NOW(), INTERVAL 4 MINUTE), NULL),
+  (35, 4, 5, DATE_SUB(NOW(), INTERVAL 2 MINUTE), NULL);

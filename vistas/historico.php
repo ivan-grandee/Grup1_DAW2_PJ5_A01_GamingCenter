@@ -66,7 +66,7 @@ $ocupaciones = $stmt->fetchAll();
 <body>
     <header>
         <h1>Histórico de ocupaciones</h1>
-        <p>Sesión: <?php echo escapar($_SESSION['username']); ?></p>
+        <p>Sesión: <?php echo escapar($_SESSION['nombre']); ?> (<?php echo escapar($_SESSION['username']); ?>)</p>
         <nav>
             <a href="./salas.php">Volver a salas</a> |
             <a href="../procesos/logout.php">Cerrar sesión</a>

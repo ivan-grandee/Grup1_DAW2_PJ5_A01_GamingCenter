@@ -386,7 +386,6 @@ body > h1 {
     font-size: 46px;
     letter-spacing: -1.5px;
     text-align: center;
-    text-shadow: 3px 3px 0 var(--papel);
 }
 
 /* Damos estilo al subtítulo de la página de inicio de sesión, utilizando letras pequeñas, mayúsculas y una mayor separación entre caracteres. */
