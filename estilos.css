@@ -1,0 +1,470 @@
+/* Importamos la fuente Roboto desde Google Fonts para utilizarla en los textos de la página. */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Definimos los colores principales de la web mediante variables para poder utilizarlos en diferentes partes del diseño sin repetir sus valores.
+   También guardamos una sombra que se aplicará a las tarjetas y otros elementos. */
+:root {
+    --tinta: #293c45;
+    --papel: #fffdf0;
+    --verde: #27785f;
+    --verde-oscuro: #1b5744;
+    --rojo: #b5544f;
+    --rojo-oscuro: #8a3d39;
+    --gris: #5d716d;
+    --linea: #dfe4d2;
+    --sombra: 0 4px 0 rgba(41, 60, 69, 0.28);
+}
+
+/* Hacemos que todos los elementos incluyan sus bordes y espacios interiores dentro de su tamaño total para evitar problemas con las dimensiones. */
+* {
+    box-sizing: border-box;
+}
+
+/* Configuramos el diseño general de la página estableciendo un ancho máximo, centrando el contenido y aplicando el color de fondo, el color del texto y la fuente principal. */
+body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+    background: #d7dfd7;
+    color: var(--tinta);
+    font: 15px/1.5 'Roboto', Arial, sans-serif;
+}
+
+/* Eliminamos los márgenes que los navegadores añaden por defecto a los títulos y párrafos para controlar nosotros mismos las separaciones. */
+h1, h2, p {
+    margin: 0;
+}
+
+/* Aplicamos una fuente diferente a los títulos, enlaces del menú y botones para diferenciarlos del resto del contenido. */
+h1, h2, nav a, button {
+    font-family: 'Calibri', 'Trebuchet MS', sans-serif;
+}
+
+/* Configuramos los enlaces para que aparezcan en verde y en negrita. */
+a {
+    color: var(--verde);
+    font-weight: bold;
+}
+
+/* Utilizamos una fuente de estilo monoespaciado en algunos textos informativos y encabezados para darles una apariencia diferente. */
+header p, th, section > p, body > h2 {
+    font-family: 'Courier New', monospace;
+}
+
+/* Diseñamos la cabecera de la página utilizando una estructura grid para distribuir el título y el menú.
+   Añadimos una imagen de Pokémon Hoenn como fondo y un degradado oscuro para que los textos se puedan leer correctamente. */
+header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-content: end;
+    align-items: end;
+    column-gap: 20px;
+    min-height: 240px;
+    margin-bottom: 26px;
+    padding: 18px 22px;
+    border-radius: 10px;
+    background:
+        linear-gradient(to top, rgba(23, 37, 43, 0.92) 0%, rgba(23, 37, 43, 0.6) 35%, rgba(23, 37, 43, 0) 75%),
+        var(--tinta) url('../assets/hoenn.png') center / cover no-repeat;
+    box-shadow: 0 4px 0 #17252b;
+}
+
+/* Configuramos el título de la cabecera con un color claro y un tamaño mayor para que destaque sobre la imagen de fondo. */
+header h1 {
+    color: var(--papel);
+    font-size: 25px;
+    letter-spacing: -0.5px;
+}
+
+/* Colocamos el texto secundario de la cabecera debajo del título y le aplicamos un tamaño más pequeño. */
+header p {
+    grid-row: 2;
+    color: #d5ebe2;
+    font-size: 12px;
+}
+
+/* Organizamos los enlaces del menú de navegación horizontalmente y los colocamos en la parte derecha de la cabecera. */
+nav {
+    display: flex;
+    gap: 6px;
+    grid-column: 2;
+    grid-row: 1 / 3;
+    font-size: 0;
+}
+
+/* Damos estilo a los enlaces del menú con espacios interiores, bordes redondeados y letras mayúsculas para que tengan apariencia de botones. */
+nav a {
+    padding: 9px 14px;
+    border-radius: 6px;
+    color: var(--papel);
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/* Al pasar el ratón por los enlaces del menú cambiamos el fondo y el color del texto para indicar que se pueden seleccionar. */
+nav a:hover {
+    background: var(--papel);
+    color: var(--tinta);
+}
+
+/* Identificamos el enlace de cerrar sesión mediante la palabra logout en su dirección y le aplicamos un fondo rojo para diferenciarlo de las demás opciones. */
+nav a[href*="logout"] {
+    margin-left: 8px;
+    background: var(--rojo);
+}
+
+/* Oscurecemos el botón de cerrar sesión cuando pasamos el ratón por encima. */
+nav a[href*="logout"]:hover {
+    background: var(--rojo-oscuro);
+    color: var(--papel);
+}
+
+/* Aplicamos un diseño común a las secciones de las salas, al formulario del histórico y al formulario de inicio de sesión. 
+   Tendrán fondo claro, bordes redondeados, espacio interior y una pequeña sombra. */
+section, form[action="historico.php"], #form-login {
+    margin-bottom: 22px;
+    padding: 20px 22px;
+    border-radius: 10px;
+    background: var(--papel);
+    box-shadow: var(--sombra);
+}
+
+/* Asignamos un color por defecto a las secciones y después establecemos colores diferentes según su posición.
+   Estos colores servirán para identificar visualmente cada sala y se utilizarán en sus títulos y elementos decorativos. */
+section {
+    --color-sala: #e3b93c;
+}
+
+section:nth-of-type(2) {
+    --color-sala: #4d9564;
+}
+
+section:nth-of-type(3) {
+    --color-sala: #e07f3e;
+}
+
+section:nth-of-type(4) {
+    --color-sala: #5a9fc4;
+}
+
+section:nth-of-type(5) {
+    --color-sala: #6a5192;
+}
+
+section:nth-of-type(6) {
+    --color-sala: #b2875a;
+}
+
+section:nth-of-type(7) {
+    --color-sala: #3f7c85;
+}
+
+section:nth-of-type(8) {
+    --color-sala: #b08fc7;
+}
+
+section:nth-of-type(9) {
+    --color-sala: #2f9b63;
+}
+
+/* Configuramos los títulos de las salas utilizando flex para alinear el texto con su elemento decorativo.
+   También añadimos una línea inferior que utiliza el color asignado a cada sala. */
+section h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--color-sala);
+    font-size: 22px;
+}
+
+/* Creamos un pequeño cuadrado de color delante del título de cada sala utilizando ::before, sin necesidad de añadir otro elemento en el HTML. */
+section h2::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    background: var(--color-sala);
+}
+
+/* Damos un estilo más discreto a los párrafos informativos que se encuentran directamente dentro de las secciones. */
+section > p {
+    margin-top: 12px;
+    color: var(--gris);
+    font-size: 12px;
+}
+
+/* Configuramos las tablas para que ocupen todo el ancho disponible y unimos los bordes de sus celdas para conseguir un diseño más limpio. */
+table {
+    width: 100%;
+    border: 0;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+/* Añadimos espacio interior a las celdas y una línea inferior para separar visualmente la información de cada fila. */
+th, td {
+    padding: 11px 8px;
+    border: 0;
+    border-bottom: 1px solid var(--linea);
+    text-align: left;
+}
+
+/* Diferenciamos los encabezados de las tablas utilizando letras pequeñas, mayúsculas y un color más suave que el texto normal. */
+th {
+    color: var(--gris);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Quitamos la línea inferior de las celdas de la última fila para que la tabla tenga un acabado más limpio. */
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+/* Cambiamos ligeramente el fondo de las filas cuando pasamos el ratón por encima para facilitar la lectura de la información. */
+tbody tr:hover {
+    background: #f6f4e2;
+}
+
+/* Destacamos en negrita el contenido de la primera columna de cada fila. */
+td:first-child {
+    font-weight: bold;
+}
+
+/* Aplicamos un fondo claro, bordes redondeados y una sombra a las tablas que se encuentran directamente dentro del body. */
+body > table {
+    border-radius: 10px;
+    background: var(--papel);
+    box-shadow: var(--sombra);
+}
+
+/* Añadimos más separación a la izquierda de las celdas de las tablas principales para que el contenido no quede tan pegado al borde. */
+body > table th, body > table td {
+    padding-left: 16px;
+}
+
+/* Hacemos que los campos de texto y los desplegables utilicen la fuente del elemento que los contiene. */
+input, select {
+    font: inherit;
+}
+
+/* Diseñamos los botones principales con fondo verde, texto claro y una sombra inferior que crea un efecto de relieve.
+   También cambiamos el cursor para indicar que se pueden pulsar. */
+button {
+    padding: 7px 16px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--verde);
+    box-shadow: 0 3px 0 var(--verde-oscuro);
+    color: var(--papel);
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Cambiamos ligeramente el color verde de los botones cuando pasamos el ratón por encima. */
+button:hover {
+    background: #2f8a6e;
+}
+
+/* Al pulsar un botón lo desplazamos hacia abajo y eliminamos su sombra para simular que se está presionando físicamente. */
+button:active {
+    transform: translateY(3px);
+    box-shadow: none;
+}
+
+/* Aplicamos un diseño rojo a los botones que pertenecen a formularios cuya acción contiene la palabra liberar, para diferenciarlos de los botones normales. */
+form[action*="liberar"] button {
+    background: var(--rojo);
+    box-shadow: 0 3px 0 var(--rojo-oscuro);
+}
+
+/* Cambiamos el tono rojo de los botones de liberar cuando pasamos el ratón por encima. */
+form[action*="liberar"] button:hover {
+    background: #c4625d;
+}
+
+/* Configuramos los campos de texto y desplegables añadiendo espacio interior, un borde suave y esquinas redondeadas para mantener el mismo estilo en todos los formularios. */
+input, select {
+    padding: 6px 9px;
+    border: 2px solid #c9d2c0;
+    border-radius: 6px;
+    background: white;
+    color: var(--tinta);
+}
+
+/* Cuando seleccionamos un campo de texto o desplegable, cambiamos su borde a verde y quitamos el contorno predeterminado del navegador. */
+input:focus, select:focus {
+    border-color: var(--verde);
+    outline: none;
+}
+
+/* Damos a las etiquetas de los formularios un tamaño de letra más pequeño y las ponemos en negrita para que sean fáciles de identificar. */
+label {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Eliminamos los márgenes de los formularios que aparecen dentro de las tablas para evitar espacios innecesarios entre sus elementos. */
+td form {
+    margin: 0;
+}
+
+/* Organizamos los elementos del formulario de ocupación horizontalmente y permitimos que pasen a otra línea si no hay suficiente espacio disponible. */
+.form-ocupacion {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Limitamos el ancho del campo donde se introduce el número de jugadores para que no ocupe más espacio del necesario. */
+.form-ocupacion input {
+    width: 62px;
+}
+
+/* Colocamos los mensajes de error de jugadores en una línea independiente dentro del formulario para que se puedan leer sin mezclarse con los demás campos. */
+.error-jugadores {
+    order: 1;
+    flex-basis: 100%;
+}
+
+/* Organizamos el formulario del histórico con flex para colocar sus campos y botones de manera ordenada, permitiendo que se adapten al espacio disponible. */
+form[action="historico.php"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Añadimos una pequeña separación a la izquierda del botón del histórico para diferenciarlo de los campos anteriores. */
+form[action="historico.php"] button {
+    margin-left: 6px;
+}
+
+/* Ocultamos los elementos de alerta que no tienen contenido para evitar que aparezcan mensajes de error vacíos en la página. */
+[role="alert"]:empty {
+    display: none;
+}
+
+/* Aplicamos un color rojo oscuro y un tamaño de letra reducido a los mensajes de error generales y a los errores relacionados con los jugadores. */
+[role="alert"], .error-jugadores {
+    color: var(--rojo-oscuro);
+    font-size: 13px;
+}
+
+/* Damos apariencia de pequeñas tarjetas a los párrafos que están directamente dentro del body, utilizando un fondo claro, espacio interior y sombra. */
+body > p {
+    width: fit-content;
+    margin-bottom: 18px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: var(--papel);
+    box-shadow: var(--sombra);
+}
+
+/* Destacamos los mensajes de estado o confirmación con una línea verde en el lateral izquierdo y el texto en negrita. */
+body > p[role="status"] {
+    border-left: 6px solid var(--verde);
+    font-weight: bold;
+}
+
+/* Destacamos los mensajes de error con una línea roja en el lateral izquierdo para diferenciarlos de los mensajes de confirmación. */
+body > p[role="alert"] {
+    border-left: 6px solid var(--rojo);
+}
+
+/* Configuramos el título principal de la página de inicio de sesión, centrándolo y aumentando su tamaño.
+   También añadimos una sombra clara al texto para que destaque sobre el fondo. */
+body > h1 {
+    margin-top: 8vh;
+    font-size: 46px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    text-shadow: 3px 3px 0 var(--papel);
+}
+
+/* Damos estilo al subtítulo de la página de inicio de sesión, utilizando letras pequeñas, mayúsculas y una mayor separación entre caracteres. */
+body > h2 {
+    margin: 4px 0 22px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Limitamos el ancho del formulario de inicio de sesión y lo centramos horizontalmente para que tenga una apariencia más ordenada. */
+#form-login {
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 26px;
+}
+
+/* Ocultamos los saltos de línea del formulario de inicio de sesión porque las separaciones entre elementos las controlamos directamente desde el CSS. */
+#form-login br {
+    display: none;
+}
+
+/* Colocamos las etiquetas del formulario de inicio de sesión en líneas independientes y añadimos separación respecto a los campos de texto. */
+#form-login label {
+    display: block;
+    margin: 14px 0 5px;
+}
+
+/* Eliminamos el margen superior de la primera etiqueta para evitar que el formulario tenga un espacio innecesario al principio. */
+#form-login label:first-child {
+    margin-top: 0;
+}
+
+/* Hacemos que los campos de texto y el botón del formulario de inicio de sesión ocupen todo el ancho disponible y aparezcan en líneas independientes. */
+#form-login input, #form-login button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+
+/* Configuramos los mensajes de error del inicio de sesión para que aparezcan en una línea independiente y tengan una pequeña separación superior. */
+#form-login [role="alert"] {
+    display: block;
+    margin-top: 4px;
+}
+
+/* Añadimos espacio encima del botón de inicio de sesión para separarlo de los campos del formulario. */
+#form-login button {
+    margin-top: 22px;
+}
+
+/* Adaptamos el diseño a dispositivos móviles cuando la pantalla tiene un ancho de 700 píxeles o menos.
+   Modificamos la distribución de la cabecera y del menú, y permitimos desplazamiento horizontal en las secciones y tablas que tengan contenido demasiado ancho. */
+@media (max-width: 700px) {
+    header {
+        grid-template-columns: 1fr;
+        row-gap: 6px;
+    }
+
+    nav {
+        grid-column: 1;
+        grid-row: 3;
+        flex-wrap: wrap;
+        margin-top: 6px;
+    }
+
+    nav a {
+        flex: 1;
+        text-align: center;
+    }
+
+    section {
+        overflow-x: auto;
+    }
+
+    body > table {
+        display: block;
+        overflow-x: auto;
+    }
+}
